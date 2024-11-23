@@ -32,5 +32,10 @@ We need to store all **Account History** records on our personal budget from mon
 ## Screenshot of Reference Table
 ![Table Appears in HTML](accounthistory_reference.png?raw=true "Table Appears in HTML")
 
-## Steps for selecting the relevant data for this exercise
-Walk down the DOM to `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12)` where `#AccountHistory` is present as the first element. This is the Account History element that holds tradelines `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12) > div:nth-child(3) > address-history > div > ng-repeat:nth-child(1)`. These tradelines hold a Two-Year payment history `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12) > div:nth-child(3) > address-history > div > ng-repeat:nth-child(1) > ng-include > table > tbody > tr > td > table`
+## Steps for selecting the relevant data from the .HTML document
+- Walk down the DOM to `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12)` where `#AccountHistory` is present as the first element
+- This is the Account History element that holds tradelines `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12) > div:nth-child(3) > address-history > div > ng-repeat:nth-child(1)`
+- These tradelines hold a Two-Year payment history `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12) > div:nth-child(3) > address-history > div > ng-repeat:nth-child(1) > ng-include > table > tbody > tr > td > table`
+- The data table per tradeline record is held here `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12) > div:nth-child(3) > address-history > div > ng-repeat:nth-child(1) > ng-include > table > tbody > tr > td > table`
+- It's rows house the data columns "Month", "Year", "ChesterPA", "AllenTX", "AtlantaGA"
+- We are to prepare a JSON array that captures the following: 
