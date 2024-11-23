@@ -3,6 +3,10 @@
 ## Description of Project
 THIS MUST BE ADDED TO THE ACCOUNT HISTORY EFFORT. We need a PHP solution to parse this HTML file uploaded by our family members. Each file will follow the same format, but the number of records inside may vary. Parsed data will be saved into a PostgreSQL database.
 
+## The Story of The Project
+Currently the JSON for Payment History is being manual created. It's being contructed and serialized in Google Sheets but this is not sustainable. But here's a brief video on the current process. We now want this process from this project to generate and INSERT this JSON in the _accounthistory_ table while Account History records are being written.
+[![Manual creation of JSON for Payment History](preparing%20payment%20history%20json.png)](https://github.com/user-attachments/assets/9b761fa6-a2e4-4532-bd63-37e40a4d69b8)
+
 ## Requirements
 * validate file size
 * validate by HTML MIME type
@@ -31,11 +35,6 @@ We need to store all **Payment History** records on our personal budget from mon
 
 ## Screenshot of Reference Table
 ![Table Appears in HTML](accounthistory_reference.png?raw=true "Table Appears in HTML")
-
-## The Story of The Project
-Currently the JSON for Payment History is being manual created. It's being contructed and serialized in Google Sheets but this is not sustainable. But here's a brief video on the current process. We now want this process from this project to generate and INSERT this JSON in the _accounthistory_ table while Account History records are being written.
-[![Manual creation of JSON for Payment History](preparing%20payment%20history%20json.png)](https://github.com/user-attachments/assets/9b761fa6-a2e4-4532-bd63-37e40a4d69b8)
-
 
 ## Steps for selecting the relevant data from the .HTML document
 - Walk down the DOM to `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12)` where `#AccountHistory` is present as the first element
