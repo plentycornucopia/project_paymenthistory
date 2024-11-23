@@ -34,7 +34,8 @@ We need to store all **Payment History** records on our personal budget from mon
 
 ## The Story of The Project
 Currently the JSON for Payment History is being manual created. It's being contructed and serialized in Google Sheets but this is not sustainable. But here's a brief video on the current process.
-https://github.com/user-attachments/assets/9b761fa6-a2e4-4532-bd63-37e40a4d69b8
+
+![Video Here](https://github.com/user-attachments/assets/9b761fa6-a2e4-4532-bd63-37e40a4d69b8)
 
 ## Steps for selecting the relevant data from the .HTML document
 - Walk down the DOM to `#ctrlCreditReport > chesterpa-report > div.ng-binding.ng-scope > div:nth-child(12)` where `#AccountHistory` is present as the first element
