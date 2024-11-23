@@ -40,15 +40,5 @@ We need to store all **Account History** records on our personal budget from mon
 - It's rows house the data columns "Month", "Year", "ChesterPA", "AllenTX", "AtlantaGA"
 - We are to prepare a JSON array that captures the following: 
 
-### JSON for the AllenTX column entry in the database
-```
-{
-  "reference": "BR54898847",
-  "report_date": "05/23/2024",
-  "furnisher": "AZ/ SYNCB/CCDSTR",
-  "account": "000",
-  "month": "May",
-  "year": "24",
-  "rating": "OK"
-}
-```
+### Expected Write
+[Download reference .SQL file](paymenthistory.sql)
