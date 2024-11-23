@@ -43,24 +43,12 @@ We need to store all **Account History** records on our personal budget from mon
 ### JSON for the AllenTX column entry in the database
 ```
 {
-  "reference": "BR54898847" // This is a comment
-},
-{
-  "report_date": "05/23/2024" // This is a comment
-},
-{
-  "furnisher": "AZ/ SYNCB/CCDSTR" // This is a comment
-},
-{
-  "account": "000" // This is a comment
-},
-{
-  "month": "May" // This is a comment
-},
-{
-  "year": "24" // This is a comment
-},
-{
-  "rating": "OK" // This is a comment
+  "reference": "BR54898847",
+  "report_date": "05/23/2024",
+  "furnisher": "AZ/ SYNCB/CCDSTR",
+  "account": "000",
+  "month": "May",
+  "year": "24",
+  "rating": "OK"
 }
 ```
