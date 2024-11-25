@@ -30,6 +30,14 @@ We need to store all **Payment History** records on our personal budget from mon
 
 ***postgres db available upon request
 
+## Additional Q&A:
+Q: So to understand more this project do you mean add a new table in the database just for Payment History or an additional row in your Account History table?
+A: This new record would live in the same [a link]([https://github.com/user/repo/blob/branch/other_file.md](https://github.com/plentycornucopia/project_accounthistory/blob/main/README.md))
+ table we created before. I actually don’t have a choice. This would be appended to that effort.
+
+Q: What data type is needed?
+A: The data type for the 3 columns is BYTEA which would work for JSON... not optimal of course but it’s our only option. Also because of how the data will come in from the .HTML it’ll be difficult to manage xREFs. Find out more in the video below.
+
 ## Screenshot of Data Table in HTML
 ![Table Appears in HTML](file%20to%20be%20parsed%20-%20payment%20history.png?raw=true "Table Appears in HTML")
 
