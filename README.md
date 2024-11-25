@@ -32,7 +32,7 @@ We need to store all **Payment History** records on our personal budget from mon
 
 ## Additional Q&A:
 Q: So to understand more this project do you mean add a new table in the database just for Payment History or an additional row in your Account History table?
-A: This new record would live in the same [a link]([https://github.com/user/repo/blob/branch/other_file.md](https://github.com/plentycornucopia/project_accounthistory/blob/main/README.md))
+A: This new record would live in the same [Account History](https://github.com/plentycornucopia/project_accounthistory/blob/main/README.md)
  table we created before. I actually don’t have a choice. This would be appended to that effort.
 
 Q: What data type is needed?
