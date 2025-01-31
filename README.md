@@ -13,6 +13,7 @@ Currently the JSON for Payment History is being manual created. It's being contr
 * temporary storage can be used but must be terminated after successful storage
 * delivered file needs to independently function without the assistance of frameworks
 * vanilla PHP is the only acceptable approach
+* Solution must be PHP Version 8.3.7
 * no frameworks to be used (like Laravel or Slim)
 
 We need to store all **Payment History** records on our personal budget from month to month. We want to store them in a Postgres DB with the following column structure:
