@@ -1,47 +1,74 @@
-/* SET UP TABLE */
-CREATE TABLE IF NOT EXISTS accounthistory (		
-Reference	VARCHAR(30)	NULL		,
-Report_Date TIMESTAMP	NULL		,
-Furnisher	VARCHAR(255)	NULL		,
-Account	VARCHAR(3)	NULL		,
-Category	VARCHAR(255)	NULL		,
-ChesterPA	bytea	NULL		,
-AllenTX	bytea	NULL		,
-AtlantaGA	bytea	NULL		
+/* ACCOUNT HISTORY */				
+CREATE TABLE IF NOT EXISTS accounthistory (				
+ID        SERIAL        ,				
+accounthistory_ID	VARCHAR(30)	NOT NULL	UNIQUE	,
+accounthistory_attributes	JSON	NULL		,
+accounthistory_reference	VARCHAR(30)	NOT NULL		,
+accounthistory_reportdate	TIMESTAMP	NOT NULL		,
+accounthistory_creditorname	VARCHAR(255)	NOT NULL		,
+accounthistory_account	VARCHAR(30)	NOT NULL		,
+accounthistory_category	VARCHAR(255)	NOT NULL		,
+accounthistory_cra1	bytea	NULL		,
+accounthistory_cra2	bytea	NULL		,
+accounthistory_cra3	bytea	NULL		,
+accounthistory_access	VARCHAR(30)	NOT NULL	DEFAULT 'public'	,
+accounthistory_status	VARCHAR(30)	NOT NULL	DEFAULT 'active'	,
+user_ID	VARCHAR(30)	NOT NULL		,
+app_ID	VARCHAR(30)	NOT NULL		,
+event_ID	VARCHAR(30)	NOT NULL		,
+process_ID	VARCHAR(30)	NOT NULL		,
+time_started	TIMESTAMP	NOT NULL	DEFAULT NOW()	,
+time_updated	TIMESTAMP	NOT NULL	DEFAULT NOW()	,
+time_finished	TIMESTAMP	NOT NULL	DEFAULT NOW()	,
+active	INT	NOT NULL	DEFAULT 1	,
+);				
+				
+SELECT * FROM	accounthistory;			
+DROP TABLE	accounthistory;			
+				
+CREATE SEQUENCE	accounthistory_sequence;			
+ALTER SEQUENCE	accounthistory_sequence RESTART WITH 8301;			
+ALTER TABLE	accounthistory ALTER COLUMN ID SET DEFAULT nextval('accounthistory_sequence');			
+				
+ALTER TABLE	ALTER TABLE accounthistory ADD FOREIGN KEY (user_ID) REFERENCES user (user_ID);			
+ALTER TABLE	ALTER TABLE accounthistory ADD FOREIGN KEY (app_ID) REFERENCES app (app_ID);			
+				
+INSERT INTO accounthistory (
+accounthistory_ID,
+accounthistory_attributes,
+accounthistory_reference,
+accounthistory_reportdate,
+accounthistory_creditorname,
+accounthistory_account,
+accounthistory_category,
+accounthistory_cra1,
+accounthistory_cra2,
+accounthistory_cra3,
+accounthistory_access,
+accounthistory_status,
+user_ID,
+app_ID,
+event_ID,
+process_ID,
+active
+) VALUES (
+'score_54663',
+'{}',
+'30 Characters',
+'05/24/2024',
+'30 Characters',
+'255 Characters',
+'255 Characters',
+'{}',
+'{}',
+'{}',
+'access_54663',
+'status_54663',
+'user_54663',
+'app_54663',
+'event_54663',
+'process_54663',
+1
 );
 
-/* SELECT EVERYTHING FROM TABLE */
-select * from accounthistory;
-
-/* INSERT TEST RECORD */
-INSERT INTO accounthistory (
-	reference,
-	report_date,
-	furnisher,
-	account,
-	category,
-	chesterpa,
-	allentx,
-	atlantaga
-) VALUES(
-	'BR54898847',
-	'2024/05/23',
-	'AZ/ SYNCB/CCDSTR',
-	'000',
-	'Account #:',
-	'{"timeline":[{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"May","year":"24","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Apr","year":"24","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Mar","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Feb","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jan","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Dec","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Nov","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Oct","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Sep","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Aug","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jul","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jun","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"May","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Apr","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Mar","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Feb","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jan","year":"23","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Dec","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Nov","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Oct","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Sep","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Aug","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jul","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"ChesterPA","month":"Jun","year":"22","rating":""}]}'::bytea,
-	'{"timeline":[{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"May","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Apr","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Mar","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Feb","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jan","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Dec","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Nov","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Oct","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Sep","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Aug","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jul","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jun","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"May","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Apr","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Mar","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Feb","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jan","year":"23","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Dec","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Nov","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Oct","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Sep","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Aug","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jul","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AllenTX","month":"Jun","year":"22","rating":""}]}',
-	'{"timeline":[{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"May","year":"24","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Apr","year":"24","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Mar","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Feb","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jan","year":"24","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Dec","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Nov","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Oct","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Sep","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Aug","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jul","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jun","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"May","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Apr","year":"23","rating":"30"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Mar","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Feb","year":"23","rating":"OK"},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jan","year":"23","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Dec","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Nov","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Oct","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Sep","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Aug","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jul","year":"22","rating":""},{"reference":"BR54898847","furnisher":"","account":"000","agency":"AtlantaGA","month":"Jun","year":"22","rating":""}]}'
-) RETURNING * ;
-
-/* SELECT EVERYTHING FROM accounthistory TABLE */
-select * from accounthistory;
-
-/* SELECT atlantaga COLUMN FROM accounthistory TABLE */
-select atlantaga from accounthistory;
-
-/* SELECT json formatted version of 'timeline' array IN atlantaga COLUMN FROM accounthistory TABLE */
-select encode(atlantaga,'escape')::json->'timeline' from accounthistory;
-
-/* 👹 SELF DESTRUCT 👹 */
-DROP table accounthistory;
+SELECT * FROM accounthistory;
